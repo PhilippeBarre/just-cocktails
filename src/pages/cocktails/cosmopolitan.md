@@ -11,12 +11,10 @@ recipe:
     - unit: cl
       quantity: 2
       name: Cointreau
-    - unit:
-        - cl
+    - unit: cl
       quantity: 2
       name: Jus de cranberry
-    - unit:
-        - cl
+    - unit: cl
       quantity: 1
       name: jus de citron
   instructions:
