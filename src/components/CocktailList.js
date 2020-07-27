@@ -35,6 +35,7 @@ class CocktailList extends React.Component {
                     <Link className="title has-text-primary is-size-4" to={post.fields.slug}>
                       {post.frontmatter.title}
                     </Link>
+                    <span className="tag is-rounded is-primary">Rounded</span>
                   </p>
                 </header>
                 <p>
