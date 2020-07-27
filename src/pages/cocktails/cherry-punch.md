@@ -1,7 +1,7 @@
 ---
 templateKey: cocktail-post
 title: Cherry punch
-description: Un cocktail fruité et délicieux !
+description: Un cocktail fruité et délicieux ! Pouet pouet
 image: /img/products-grid2.jpg
 recipe:
   ingredients:
