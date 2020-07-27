@@ -46,6 +46,16 @@ collections:
           {label: "Instructions", name: "instructions", widget: "list", field: {label: Instruction, name: instruction, widget: string}}
         ]}
 
+  - name: "random-shot"
+    label: "Random shot"
+    folder: "src/pages/random-shot"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "random-shot-post"}
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Category", name: "category", widget: "select", options: ["Alcool", "Liquor", "Syrup"], default: "Alcool"}
+
   - name: "pages"
     label: "Pages"
     files:
