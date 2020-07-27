@@ -1,9 +1,10 @@
 import React from 'react'
-
+import { graphql, StaticQuery } from "gatsby"
 import Layout from '../../components/Layout'
 
-export default class RandomShotIndexPage extends React.Component {
+class RandomShotIndexPage extends React.Component {
   render() {
+    console.log(this.props)
     return (
       <Layout>
         <div
@@ -35,3 +36,92 @@ export default class RandomShotIndexPage extends React.Component {
     )
   }
 }
+
+export default () => (
+  <StaticQuery
+    query={graphql`
+      query {
+        alcool: allMarkdownRemark(
+          sort: { order: ASC, fields: [frontmatter___title] }
+          filter: { 
+            frontmatter: { 
+              templateKey: { eq: "random-shot-post" } 
+              category: { eq: "Alcool" } 
+            }
+          }
+        ) {
+          edges {
+            node {
+              excerpt(pruneLength: 400)
+              id
+              fields {
+                slug
+              }
+              frontmatter {
+                name
+                templateKey
+              }
+            }
+          }
+        }
+        liquor: allMarkdownRemark(
+          sort: { order: ASC, fields: [frontmatter___title] }
+          filter: { 
+            frontmatter: { 
+              templateKey: { eq: "random-shot-post" } 
+              category: { eq: "Liquor" } 
+            }
+          }
+        ) {
+          edges {
+            node {
+              excerpt(pruneLength: 400)
+              id
+              fields {
+                slug
+              }
+              frontmatter {
+                name
+                templateKey
+              }
+            }
+          }
+        }
+        syrup: allMarkdownRemark(
+          sort: { order: ASC, fields: [frontmatter___title] }
+          filter: { 
+            frontmatter: { 
+              templateKey: { eq: "random-shot-post" } 
+              category: { eq: "Syrup" } 
+            }
+          }
+        ) {
+          edges {
+            node {
+              excerpt(pruneLength: 400)
+              id
+              fields {
+                slug
+              }
+              frontmatter {
+                name
+                templateKey
+              }
+            }
+          }
+        }
+        allDirectory {
+          edges {
+            node {
+              id
+              name
+            }
+          }
+        }
+      }
+    `}
+    render={(data) => (
+      <RandomShotIndexPage alcool={data.alcool} liquor={data.liquor} syrup={data.syrup} />
+    )}
+  />
+)
