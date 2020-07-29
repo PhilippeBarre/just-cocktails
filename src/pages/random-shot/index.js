@@ -42,7 +42,7 @@ class RandomShotIndexPage extends React.Component {
         <div
           className="full-width-image-container margin-top-0"
           style={{
-            backgroundImage: `url('/img/random-shot-3.jpg')`,
+            backgroundImage: `url('/img/random-shot.jpg')`,
           }}
         >
           <h1
