@@ -3,8 +3,42 @@ import { graphql, StaticQuery } from "gatsby"
 import Layout from '../../components/Layout'
 
 class RandomShotIndexPage extends React.Component {
+  randomShot = {
+    alcool: '',
+    liquor: '',
+    syrup: ''
+  }
+
+  constructor(props) {
+    super(props);
+    this.giveRandomShot = this.giveRandomShot.bind(this);
+    this.state = {showRandomShot: false};
+  }
+
+  giveRandomShot() {
+    this.randomShot.alcool = this.props.alcool[Math.floor(Math.random() * this.props.alcool.length)].node.frontmatter.name
+    this.randomShot.liquor = this.props.liquor[Math.floor(Math.random() * this.props.liquor.length)].node.frontmatter.name
+    this.randomShot.syrup = this.props.syrup[Math.floor(Math.random() * this.props.syrup.length)].node.frontmatter.name
+    this.setState({showRandomShot: true});
+  }
+
   render() {
-    console.log(this.props)
+    let displayRandomShot;
+
+    if (this.state.showRandomShot) {
+      displayRandomShot = 
+      <div>
+        <p>Drink this shot :</p>
+        <ul>
+          <li>{this.randomShot.alcool}</li>
+          <li>{this.randomShot.liquor}</li>
+          <li>{this.randomShot.syrup}</li>
+        </ul>
+      </div>
+    } else {
+      displayRandomShot = <div></div>;
+    }
+
     return (
       <Layout>
         <div
@@ -28,7 +62,35 @@ class RandomShotIndexPage extends React.Component {
         <section className="section">
           <div className="container">
             <div className="content">
-              
+              <div className="columns">
+                <div className="column">
+                  <div className="card">
+                    <div className="card-content">
+                      <p className="title">Alcool list</p>
+                      { this.props.alcool.map(el => <span key={el.node.id} className="tag is-primary">{el.node.frontmatter.name}</span>) }
+                    </div>
+                  </div>
+                </div>
+                <div className="column">
+                <div className="card">
+                    <div className="card-content">
+                      <p className="title">Liquor list</p>
+                      { this.props.liquor.map(el => <span key={el.node.id} className="tag is-primary">{el.node.frontmatter.name}</span>) }
+                    </div>
+                  </div>
+                </div>
+                <div className="column">
+                <div className="card">
+                    <div className="card-content">
+                      <p className="title has-text-info	">Syrup list</p>
+                      { this.props.syrup.map(el => <span key={el.node.id} className="tag is-primary">{el.node.frontmatter.name}</span>) }
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <button onClick={this.giveRandomShot} className="button is-primary">Give me a random shot !</button>
+              {displayRandomShot}
             </div>
           </div>
         </section>
@@ -121,7 +183,7 @@ export default () => (
       }
     `}
     render={(data) => (
-      <RandomShotIndexPage alcool={data.alcool} liquor={data.liquor} syrup={data.syrup} />
+      <RandomShotIndexPage alcool={data.alcool.edges} liquor={data.liquor.edges} syrup={data.syrup.edges} />
     )}
   />
 )
