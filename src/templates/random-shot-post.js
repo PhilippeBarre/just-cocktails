@@ -3,17 +3,13 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import Content, { HTMLContent } from '../components/Content'
+import { HTMLContent } from '../components/Content'
 
 export const RandomShotPostTemplate = ({
-  content,
-  contentComponent,
   category,
   name,
   helmet,
 }) => {
-  const PostContent = contentComponent || Content
-
   return (
     <section className="section">
       {helmet || ''}

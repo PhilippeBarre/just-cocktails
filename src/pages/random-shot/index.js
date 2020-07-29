@@ -29,11 +29,9 @@ class RandomShotIndexPage extends React.Component {
       displayRandomShot = 
       <div>
         <p>Drink this shot :</p>
-        <ul>
-          <li>{this.randomShot.alcool}</li>
-          <li>{this.randomShot.liquor}</li>
-          <li>{this.randomShot.syrup}</li>
-        </ul>
+        <div><span className="tag is-danger">{this.randomShot.alcool}</span></div>
+        <div><span className="tag is-warning">{this.randomShot.liquor}</span></div>
+        <div><span className="tag is-success">{this.randomShot.syrup}</span></div>
       </div>
     } else {
       displayRandomShot = <div></div>;
@@ -44,7 +42,7 @@ class RandomShotIndexPage extends React.Component {
         <div
           className="full-width-image-container margin-top-0"
           style={{
-            backgroundImage: `url('/img/blog-index.jpg')`,
+            backgroundImage: `url('/img/random-shot-3.jpg')`,
           }}
         >
           <h1
@@ -65,25 +63,25 @@ class RandomShotIndexPage extends React.Component {
               <div className="columns">
                 <div className="column">
                   <div className="card">
-                    <div className="card-content">
-                      <p className="title">Alcool list</p>
-                      { this.props.alcool.map(el => <span key={el.node.id} className="tag is-primary">{el.node.frontmatter.name}</span>) }
+                    <div className="card-content tag-container">
+                      <p className="title has-text-danger-dark">Alcool list</p>
+                      { this.props.alcool.map(el => <span key={el.node.id} className="tag is-danger is-light">{el.node.frontmatter.name}</span>) }
                     </div>
                   </div>
                 </div>
                 <div className="column">
-                <div className="card">
-                    <div className="card-content">
-                      <p className="title">Liquor list</p>
-                      { this.props.liquor.map(el => <span key={el.node.id} className="tag is-primary">{el.node.frontmatter.name}</span>) }
+                  <div className="card">
+                    <div className="card-content tag-container">
+                      <p className="title has-text-warning-dark">Liquor list</p>
+                      { this.props.liquor.map(el => <span key={el.node.id} className="tag is-warning is-light">{el.node.frontmatter.name}</span>) }
                     </div>
                   </div>
                 </div>
                 <div className="column">
-                <div className="card">
-                    <div className="card-content">
-                      <p className="title has-text-info	">Syrup list</p>
-                      { this.props.syrup.map(el => <span key={el.node.id} className="tag is-primary">{el.node.frontmatter.name}</span>) }
+                 <div className="card">
+                    <div className="card-content tag-container">
+                      <p className="title has-text-success-dark">Syrup list</p>
+                      { this.props.syrup.map(el => <span key={el.node.id} className="tag is-success is-light">{el.node.frontmatter.name}</span>) }
                     </div>
                   </div>
                 </div>

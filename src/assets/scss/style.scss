@@ -136,6 +136,13 @@ $menu-label-color: $primary;
     margin: 0 1.5em 0 0;
 }
 
+// Random shot
+
+.tag-container span.tag {
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
 
 @import "~bulma"
 
